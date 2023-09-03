@@ -1,5 +1,6 @@
 package components.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import components.CommentNotiProxy;
@@ -8,14 +9,10 @@ import domain.Comment;
 
 @Component
 public class CommentService {
+	@Autowired
 	private CommentRepository repository;
+	@Autowired
 	private CommentNotiProxy notiProxy;
-	
-	public CommentService(CommentRepository repository, CommentNotiProxy notiProxy) {
-		super();
-		this.repository = repository;
-		this.notiProxy = notiProxy;
-	}
 
 	public void publishComment(Comment comment) {
 		repository.storeComment(comment);
